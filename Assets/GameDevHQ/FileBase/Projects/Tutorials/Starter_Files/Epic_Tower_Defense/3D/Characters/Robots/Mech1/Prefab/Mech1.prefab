@@ -1504,6 +1504,8 @@ GameObject:
   - component: {fileID: 95831276238310704}
   - component: {fileID: 5212819916465077862}
   - component: {fileID: 6556251453211256697}
+  - component: {fileID: 1062400695}
+  - component: {fileID: 811049038708859187}
   m_Layer: 0
   m_Name: Mech1
   m_TagString: Untagged
@@ -1581,9 +1583,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _agentSpeed: 10
+  _agentSpeed: 1.5
   _agentHealth: 0
   agentWarFund: 0
+--- !u!135 &1062400695
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637921026644932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 5, z: 0}
+--- !u!54 &811049038708859187
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637921026644932}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1695296882317140
 GameObject:
   m_ObjectHideFlags: 0

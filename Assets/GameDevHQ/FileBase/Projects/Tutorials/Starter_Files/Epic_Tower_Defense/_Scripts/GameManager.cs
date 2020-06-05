@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int _numOfEnemies;
     [SerializeField]
-    private float _delayBetweenEnemies = 2f;
+    private float _minDelayBetweenEnemies = 1f;
+    [SerializeField]
+    private float _maxDelayBetweenEnemies = 2f;
 
     private void Start()
     {
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
             {
                 SpawnEnemy();
                 _numOfEnemies++;
-                yield return new WaitForSeconds(Random.Range(0f, _delayBetweenEnemies));
+                yield return new WaitForSeconds(Random.Range(_minDelayBetweenEnemies, _maxDelayBetweenEnemies));
             }
             else
             {

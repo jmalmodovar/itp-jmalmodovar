@@ -28,7 +28,7 @@ public class AIMovement : MonoBehaviour
 
     void Update()
     {
-        CheckDestinationReached();
+        //CheckDestinationReached();
     }
 
     // TODO: turn this into a trigger object.
@@ -40,4 +40,13 @@ public class AIMovement : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "endPoint")
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
 }
