@@ -18,12 +18,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _timer = Time.time;
+        StartCoroutine(SpawnRoutine());
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {/*
+        // int totalEnemies
         if(_numOfEnemies > _actualWave*_enemiesWaveMultiplier)
         {
             _numOfEnemies = 0;
@@ -37,13 +38,34 @@ public class GameManager : MonoBehaviour
             _timer = Time.time + Random.Range(1f, 3f);
             _numOfEnemies++;
         }
-
+*/
     }
 
     void SpawnEnemy()
     {
         GameObject enemy = SpawnManager.Instance.RequestEnemy();
         enemy.transform.position = SpawnManager.Instance.startPoint.transform.position;
+
+    }
+
+    IEnumerator SpawnRoutine()
+    {
+        while(true)
+        {
+            // int
+            if (_numOfEnemies < _actualWave * _enemiesWaveMultiplier)
+            {
+                SpawnEnemy();
+                _numOfEnemies++;
+                yield return new WaitForSeconds(Random.Range(0f, 1.5f));
+            }
+            else
+            {
+                _actualWave++;
+                _numOfEnemies = 0;
+                yield return new WaitForSeconds(3f);
+            }
+        }
     }
 
 

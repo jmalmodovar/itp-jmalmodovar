@@ -1556,7 +1556,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1584,7 +1584,6 @@ MonoBehaviour:
   _agentSpeed: 10
   _agentHealth: 0
   agentWarFund: 0
-  _enemyPrefab: []
 --- !u!1 &1695296882317140
 GameObject:
   m_ObjectHideFlags: 0
