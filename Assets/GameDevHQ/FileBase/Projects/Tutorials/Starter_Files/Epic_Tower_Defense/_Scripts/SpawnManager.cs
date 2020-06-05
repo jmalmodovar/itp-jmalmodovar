@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
 
         for(int i = 0; i < amountOfEnemies; i++)
         {
-            GameObject enemy = Instantiate(_enemyPrefab[Random.Range(0,2)]);
+            GameObject enemy = Instantiate(_enemyPrefab[Random.Range(0,2)]); // lenght array
             enemy.transform.parent = _enemiesContainer.transform;
             enemy.SetActive(false);
             _enemiesPool.Add(enemy);
