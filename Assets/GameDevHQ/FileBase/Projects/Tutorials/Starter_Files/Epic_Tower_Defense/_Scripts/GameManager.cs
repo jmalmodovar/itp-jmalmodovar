@@ -11,59 +11,40 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int _actualWave = 1;
     [SerializeField]
+    private float _delayBetweenWaves = 3f;
+    [SerializeField]
     private int _numOfEnemies;
-
-    private float _timer;
+    [SerializeField]
+    private float _delayBetweenEnemies = 2f;
 
     private void Start()
     {
-        _timer = Time.time;
         StartCoroutine(SpawnRoutine());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {/*
-        // int totalEnemies
-        if(_numOfEnemies > _actualWave*_enemiesWaveMultiplier)
-        {
-            _numOfEnemies = 0;
-            _actualWave++;
-            _timer = Time.time + 10f;
-        }
-
-        if (Time.time > _timer)
-        {
-            SpawnEnemy();
-            _timer = Time.time + Random.Range(1f, 3f);
-            _numOfEnemies++;
-        }
-*/
     }
 
     void SpawnEnemy()
     {
         GameObject enemy = SpawnManager.Instance.RequestEnemy();
         enemy.transform.position = SpawnManager.Instance.startPoint.transform.position;
-
     }
 
     IEnumerator SpawnRoutine()
     {
         while(true)
         {
-            // int
-            if (_numOfEnemies < _actualWave * _enemiesWaveMultiplier)
+            int totalEnemies = _actualWave * _enemiesWaveMultiplier;
+
+            if (_numOfEnemies < totalEnemies)
             {
                 SpawnEnemy();
                 _numOfEnemies++;
-                yield return new WaitForSeconds(Random.Range(0f, 1.5f));
+                yield return new WaitForSeconds(Random.Range(0f, _delayBetweenEnemies));
             }
             else
             {
                 _actualWave++;
                 _numOfEnemies = 0;
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(_delayBetweenWaves);
             }
         }
     }

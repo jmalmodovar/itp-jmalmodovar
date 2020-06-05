@@ -3960,7 +3960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesContainer: {fileID: 1721081779}
-  _initialPoolSize: 7
+  _initialPoolSize: 3
   _enemiesPool: []
   _enemyPrefab:
   - {fileID: 1637921026644932, guid: b6f9eb08e9dcb484fbccc49d65f561ab, type: 3}
@@ -9209,6 +9209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbff5229472b92a4cb63675d37fd78a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numOfWaves: 0
+  _enemiesWaveMultiplier: 10
+  _actualWave: 1
+  _delayBetweenWaves: 3
+  _numOfEnemies: 0
+  _delayBetweenEnemies: 2
 --- !u!1001 &1729764490
 PrefabInstance:
   m_ObjectHideFlags: 0
