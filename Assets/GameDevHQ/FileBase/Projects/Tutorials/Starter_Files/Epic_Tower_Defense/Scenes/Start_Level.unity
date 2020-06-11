@@ -2627,11 +2627,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ac3e23a379f43a48a64cd7d03232dd8, type: 3}
+  m_Script: {fileID: 11500000, guid: 10792a7c8d2f01641bb6178a397b9523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
-  _zoomSpeed: 5
+  _moveSpeed: 10
+  _zoomSpeed: 10
+  _marginPercentage: 0.15
 --- !u!1 &552431162
 GameObject:
   m_ObjectHideFlags: 0
