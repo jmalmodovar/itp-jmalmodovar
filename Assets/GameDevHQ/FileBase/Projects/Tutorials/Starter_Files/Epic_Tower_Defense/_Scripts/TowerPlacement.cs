@@ -10,6 +10,12 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField]
     private GameObject[] _realTower;
 
+    private bool _isPlacingTower;
+
+    // Event signaling that I'm placing a tower
+    public delegate void PlacingTower();
+    public static event PlacingTower OnPlacingTower;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +26,34 @@ public class TowerPlacement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("key");
+            _decoyTower[0].gameObject.SetActive(true);
+
+            // event
+            if(OnPlacingTower!=null)
+            {
+                OnPlacingTower();
+            }
+
+            _isPlacingTower = true;
         }
 
+        if(Input.GetMouseButtonDown(1))
+        {
+            _isPlacingTower = false;
+            _decoyTower[0].gameObject.SetActive(false);
+            //_decoyTower[0].transform.GetChild(0).gameObject.SetActive(false);
+            //_decoyTower[0].transform.GetChild(1).gameObject.SetActive(true);
+        }
 
+        if(_isPlacingTower) PlaceTurret();
+
+    }
+
+    private void PlaceTurret()
+    {
         // Cast a ray to the game world & update position of our decoy tower
         Ray rayOrigin = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
@@ -38,7 +66,7 @@ public class TowerPlacement : MonoBehaviour
                 _decoyTower[0].transform.GetChild(0).gameObject.SetActive(true);
                 _decoyTower[0].transform.GetChild(1).gameObject.SetActive(false);
 
-                if(Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     Instantiate(_realTower[0], _decoyTower[0].transform.position, Quaternion.identity);
                 }
@@ -50,8 +78,5 @@ public class TowerPlacement : MonoBehaviour
                 _decoyTower[0].transform.GetChild(1).gameObject.SetActive(true);
             }
         }
-
-
-
     }
 }
